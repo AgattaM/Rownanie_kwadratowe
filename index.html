@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Równanie kwadratowe</title>
+    <style>
+        #rownanie{
+            text-align: center;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="rownanie">
+    <h3>Równanie kwadratowe ma postać:</h3><br>
+    <h4>y=ax<sup>2</sup>+bx+c</h4>
+    <form>
+        <label>Podaj a: </label><input type="text" id="a"><br>
+        <label>Podaj b: </label><input type="text" id="b"><br>
+        <label>Podaj c: </label><input type="text" id="c"><br><br>
+        <input type="button" onclick="oblicz();" value="Oblicz">
+    </form>
+    <p id="wynik"></p>
+    </div>
+    <script src="skrypt.js"></script>
+</body>
+</html>

@@ -76,7 +76,7 @@ function oblicz(){
             x = c/b;
             document.getElementById("wynik").innerHTML += "x = "+x;
         }
-        else{
+        else if(c=0||c!=0){
             document.getElementById("wynik").innerHTML = "Podałeś tylko c.";
         }
         

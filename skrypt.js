@@ -38,7 +38,7 @@ function oblicz(){
 
         if(delta==0){
             let x=-b/2*a;
-            document.getElementById("wynik").innerHTML += "X = "+x;
+            document.getElementById("wynik").innerHTML += "x = "+x;
         }
         else if(delta>0){
             let x1= (-b-Math.sqrt(delta))/2*a;

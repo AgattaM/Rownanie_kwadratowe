@@ -73,7 +73,7 @@ function oblicz(){
             }
             document.getElementById("wynik").innerHTML += "<br>"
 
-            x = c/b;
+            x = c/b*(-1);
             document.getElementById("wynik").innerHTML += "x = "+x;
         }
         else if(c!=0){

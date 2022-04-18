@@ -55,6 +55,7 @@ function oblicz(){
     
     else{
         if(b!=0){
+            //równanie liniowe
             document.getElementById("wynik").innerHTML += "<b>To jest równanie liniowe, nie kwadratowe</b> (nie podałeś a)<br>Ale je też potrafię obliczyć :)<br><br>";
             document.getElementById("wynik").innerHTML +="y = ";
             if(b==1){
@@ -78,7 +79,12 @@ function oblicz(){
             document.getElementById("wynik").innerHTML += "x = "+x;
         }
         else if(c!=0){
+            //podane tylko c
             document.getElementById("wynik").innerHTML = "Podałeś tylko c.";
+        }
+        else{
+           // document.getElementById("kroki").innerHTML = " ";
+            alert("Nie wygłupiaj się!\nPodaj jakieś liczby (inne niż 0).");
         }
         
     }
@@ -126,7 +132,7 @@ function kroki(){
         document.getElementById("kroki").innerHTML += "Δ = "+delta+"<br><br>";
 
         //przrównanie delty do zera
-        document.getElementById("kroki").innerHTML += "<p class='opisy'>2. Teraz przyrównujemy deltę do zera i sprawdzamy czy: <ul><li>Δ > 0</li><li>Δ = 0</li><li>Δ < 0</li></ul></p>";
+        document.getElementById("kroki").innerHTML += "<p class='opisy'>2. Teraz przyrównujemy deltę do zera i sprawdzamy czy: <ul type='none'><li>Δ > 0</li><li>Δ = 0</li><li>Δ < 0</li></ul></p>";
         document.getElementById("kroki").innerHTML += "W naszym przypadku: ";
         
         //zapis rownania z podstawionym a,b i c
@@ -162,9 +168,9 @@ function kroki(){
 
         if(delta==0){
             document.getElementById("kroki").innerHTML += "Δ = 0";
-            document.getElementById("kroki").innerHTML += "<p class='opisy'>To oznacza, że równanie ma jedno rozwiązanie.</p><br>"
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>To oznacza, że równanie ma jedno rozwiązanie.</p>"
             let x=-b/(2*a);
-
+            //krok 3.
             document.getElementById("kroki").innerHTML += "<p class='opisy'>3. Teraz podstawiamy dane do wzoru:</p>";
             document.getElementById("kroki").innerHTML += "<p class='wzory'>x = (-b)/(2*a)</p>";
             document.getElementById("kroki").innerHTML += "<p class='opisy'>i obliczamy:<p>";
@@ -175,7 +181,7 @@ function kroki(){
             //przejscie pierwsze
             document.getElementById("kroki").innerHTML += "<b>x</b> = ";
             //minus przy b
-            if(b<0){
+            if(b<=0){
                 document.getElementById("kroki").innerHTML += b +"/(2*";
             }
             else{
@@ -215,7 +221,8 @@ function kroki(){
         else if(delta>0){
             //wypisanie wzorów
             document.getElementById("kroki").innerHTML += "Δ > 0";
-            document.getElementById("kroki").innerHTML += "<p class='opisy'>To oznacza, że równanie ma dwa rozwiązania.</p><br>"
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>To oznacza, że równanie ma dwa rozwiązania.</p>"
+            //krok 3.
             document.getElementById("kroki").innerHTML += "<p class='opisy'>3. Teraz podstawiamy dane do dwóch wzorów:</p>";
             document.getElementById("kroki").innerHTML += "<p class='wzory'>x<sub>1</sub> = (-b-&radic;<span style='text-decoration: overline'>Δ</span>)/(2*a)</p>";
             document.getElementById("kroki").innerHTML += "<p class='opisy'>i<p>";
@@ -233,7 +240,7 @@ function kroki(){
             //przejscie pierwsze
             document.getElementById("kroki").innerHTML += "<b>x<sub>1</sub></b> = (";
             //minus przy b
-            if(b<0){
+            if(b<=0){
                 document.getElementById("kroki").innerHTML += b +"-&radic;<span style='text-decoration: overline'>"+delta+"</span>)/(2*";
             }
             else{
@@ -249,7 +256,7 @@ function kroki(){
             //przejscie drugie
             document.getElementById("kroki").innerHTML += " = (";
             //minus przy b
-            if(b<0){
+            if(b<=0){
                 document.getElementById("kroki").innerHTML += b+"-"+Math.sqrt(delta)+")/(2*";
             }
             else{
@@ -287,7 +294,7 @@ function kroki(){
             //przejscie pierwsze
             document.getElementById("kroki").innerHTML += "<b>x<sub>2</sub></b> = (";
             //minus przy b
-            if(b<0){
+            if(b<=0){
                 document.getElementById("kroki").innerHTML += b +"+&radic;<span style='text-decoration: overline'>"+delta+"</span>)/(2*";
             }
             else{
@@ -303,7 +310,7 @@ function kroki(){
             //przejscie drugie
             document.getElementById("kroki").innerHTML += " = (";
             //minus przy b
-            if(b<0){
+            if(b<=0){
                 document.getElementById("kroki").innerHTML += b+"+"+Math.sqrt(delta)+")/(2*";
             }
             else{
@@ -343,15 +350,22 @@ function kroki(){
         }
         else{
             document.getElementById("kroki").innerHTML += "Δ < 0, więc:<br><br>";
-            document.getElementById("kroki").innerHTML += "RÓWNANIE NIE MA ROZWIĄZANIA";
+            document.getElementById("kroki").innerHTML += "TO RÓWNANIE NIE MA ROZWIĄZANIA";
         }
         
     }
     
     else{
         if(b!=0){
-            document.getElementById("kroki").innerHTML += "<b>To jest równanie liniowe, nie kwadratowe</b> (nie podałeś a)<br>Ale je też potrafię obliczyć :)<br><br>";
-            document.getElementById("kroki").innerHTML +="y = ";
+            document.getElementById("kroki").innerHTML += "<p class='opisy'><b>To jest równanie liniowe, nie kwadratowe</b> (nie podałeś a),<br>dlatego obliczmy je jak równanie liniowe.</p>";//Ale je też potrafię obliczyć :)<br><br>";
+            
+            //wzór ogólny
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>Równanie liniowe ma postać:</p>";
+            document.getElementById("kroki").innerHTML += "<p class='wzory'>y = bx+c</p>";
+            
+            //wzór indywidualny
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>W tym przypadku:</p>";
+            document.getElementById("kroki").innerHTML += "y = ";
             if(b==1){
                 document.getElementById("kroki").innerHTML += "x";
             }
@@ -367,16 +381,79 @@ function kroki(){
             else if(c<0){
                 document.getElementById("kroki").innerHTML += c;
             }
-            document.getElementById("kroki").innerHTML += "<br>"
+            document.getElementById("kroki").innerHTML += "<br>";
 
+            //krok zerowy
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>Miejsce zerowe to takie w którym:</p>";
+            document.getElementById("kroki").innerHTML += "<p class='wzory'>y = 0</p>";
+            //krok pierwszy
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>1. Dlatego, zapisujemy, że:</p>";
+
+            //zapis działania
+            //document.getElementById("kroki").innerHTML +="0 = ";
+            if(b==1){
+                document.getElementById("kroki").innerHTML += "x";
+            }
+            else if(b==-1){
+                document.getElementById("kroki").innerHTML += "-x";
+            }
+            else{
+                document.getElementById("kroki").innerHTML += +b+"x";
+            }
+            if(c>0){
+                document.getElementById("kroki").innerHTML += "+"+c;
+            }
+            else if(c<0){
+                document.getElementById("kroki").innerHTML += c;
+            }
+            document.getElementById("kroki").innerHTML += " = 0";
+            document.getElementById("kroki").innerHTML += "<br>";
+
+            //krok drugi
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>2. Wszystko co z x (w naszym przypadku bx) zostawaimy po lewo, całą resztę (w naszym przypadku c) przestawiamy na prawą stronę znaku = i zmieniamy znak:</p>";
+            //zapisanie wzoru
+            document.getElementById("kroki").innerHTML += b+"x = ";
+            let p = -c;
+            document.getElementById("kroki").innerHTML += p;
+
+            document.getElementById("kroki").innerHTML += "<br>";
+
+            //krok trzeci
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>3. Stronę prawą dzielimy przez liczbę stojącą przy x (w naszym przypadku c):</p>";
+            document.getElementById("kroki").innerHTML += "<b>x</b> = ";
+            if(p<0){
+                document.getElementById("kroki").innerHTML += "("+p+")";
+            }
+            else{
+                document.getElementById("kroki").innerHTML += p;
+            }
+            document.getElementById("kroki").innerHTML += "/";
+            if(b<0){
+                document.getElementById("kroki").innerHTML += "("+b+")";
+            }
+            else{
+                document.getElementById("kroki").innerHTML += b;
+            }
+            document.getElementById("kroki").innerHTML += " = <b>"+x+"</b><br>";
+            //krok czwarty
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>4. Na koniec odczytujemy wynik</p>";
+            //wynik
             x = c/b*(-1);
-            document.getElementById("kroki").innerHTML += "x = "+x;
+            document.getElementById("kroki").innerHTML += "<b>x = "+x+"</b>";
         }
         else if(c!=0){
-            document.getElementById("kroki").innerHTML = "Podałeś tylko c.";
-        }
-        
+            document.getElementById("kroki").innerHTML = "<h3>WYJAŚNIENIE</h3>";
+            //document.getElementById("kroki").innerHTML += "Podałeś tylko c.";
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>Gdy chcemy obliczyć miejsca zerowe, zakładamy, że:</p>";
+            document.getElementById("kroki").innerHTML += "<p class='wzory'>y = 0</p>";
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>Gdy podałeś tylko c to tak jak byś napisał, że:</p>";
+            document.getElementById("kroki").innerHTML += "<p class='wzory'>y = c</p>";
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>Czyli:</p>";
+            document.getElementById("kroki").innerHTML += "<p class='wzory'>0 = "+c+"</p>";
+            document.getElementById("kroki").innerHTML += "<p class='opisy'>A to nie jest prawda, dlatego takie równanie nazwalibyśmy <b>równaniem sprzecznym</b>.</p>";
+        }   
+        else{
+            document.getElementById("kroki").innerHTML = " ";
+        }     
     }
-    document.getElementById("kroki").innerHTML +="<br>";
-
 }

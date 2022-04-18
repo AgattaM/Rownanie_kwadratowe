@@ -105,6 +105,8 @@ function kroki(){
         let delta = b*b-4*a*c;
         document.getElementById("kroki").innerHTML += "<p class='opisy'>1. Na początek obliczamy Δ (deltę / wyróżnik równania kwadratowego):</p>";
         document.getElementById("kroki").innerHTML += "<p class='wzory'>Δ = b<sup>2</sup>-4*a*c</p>";
+        
+        //przejście pierwsze
         document.getElementById("kroki").innerHTML += "Δ = ";
         //prawidlowe wyswietlanie minusow (-)
         if(b>=0){
@@ -127,6 +129,17 @@ function kroki(){
         else{
             document.getElementById("kroki").innerHTML += "("+c+")";
         }
+        //przejście drugie
+        document.getElementById("kroki").innerHTML += " = ";
+        document.getElementById("kroki").innerHTML += b*b;
+        let mn = 4*a*c*(-1);
+        if(mn>=0){
+            document.getElementById("kroki").innerHTML += "+"+mn;
+        }
+        else{
+            document.getElementById("kroki").innerHTML += mn;
+        }
+        document.getElementById("kroki").innerHTML += " = "+delta;        
         document.getElementById("kroki").innerHTML += "<br><br>";
         //wyswietl deltę
         document.getElementById("kroki").innerHTML += "Δ = "+delta+"<br><br>";

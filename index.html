@@ -7,6 +7,9 @@
         #rownanie{
             text-align: center;
         }
+        #min, #naj{
+            width: 3em;
+        }
     </style>
     
 </head>
@@ -19,7 +22,10 @@
         <label>Podaj b: </label><input type="text" id="b"><br>
         <label>Podaj c: </label><input type="text" id="c"><br><br>
         <input type="button" onclick="oblicz();" value="Oblicz"><br><br>
-        <input type="button" onclick="kroki();" value="Krok po kroku">
+        <input type="button" onclick="kroki();" value="Krok po kroku"><br><br>
+        <input type="button" onclick="losuj();" value="Losuj">
+        <label>od </label><input type="number" id="min" value="-30">
+        <label>do </label><input type="number" id="naj" value="30">
     </form>
     <p id="wynik"></p>
     <div id="kroki"></div>

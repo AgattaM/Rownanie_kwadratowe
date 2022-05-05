@@ -1,3 +1,4 @@
+//napisała: Agata Majewska
 function oblicz(){
     let a = Number(document.getElementById("a").value);
     let b = Number(document.getElementById("b").value);
@@ -6,6 +7,9 @@ function oblicz(){
     document.getElementById("kroki").innerHTML = "";
 
     if(a!=0){
+        //równanie kwadratowe
+
+        //wyświetlenie równania
         let delta = b*b-4*a*c;
         document.getElementById("wynik").innerHTML += "y = ";
         if(a==1){
@@ -37,6 +41,7 @@ function oblicz(){
         }
         document.getElementById("wynik").innerHTML += "<br><br>";
 
+        //obliczanie delty
         if(delta==0){
             let x=-b/2*a;
             document.getElementById("wynik").innerHTML += "x = "+x;
@@ -96,7 +101,7 @@ function kroki(){
     let a = Number(document.getElementById("a").value);
     let b = Number(document.getElementById("b").value);
     let c = Number(document.getElementById("c").value);
-    document.getElementById("kroki").innerHTML = "";
+    //document.getElementById("kroki").innerHTML = "";
     //document.getElementById("kroki").innerHTML = "";
     oblicz();
     document.getElementById("kroki").innerHTML = "<h3>Krok po kroku</h3>";
@@ -468,5 +473,72 @@ function kroki(){
         else{
             document.getElementById("kroki").innerHTML = " ";
         }     
+    }
+}
+
+function losuj(){
+    //wyczyszczenie miejsca na wyświetlanie
+    document.getElementById("kroki").innerHTML = ""; 
+    document.getElementById("wynik").innerHTML = "";
+    //zakres lowowania od min do naj
+    let naj = Number(document.getElementById("naj").value);
+    let min = Number(document.getElementById("min").value);
+
+    if(naj>=min){
+    //let naj = 2;
+    //let min = -2;
+    let max = naj - min;
+
+    //losowanie liczb
+    let a = Math.round(Math.random()*max+min);
+    document.getElementById("a").value = a;
+    let b = Math.round(Math.random()*max+min);
+    document.getElementById("b").value = b
+    let c = Math.round(Math.random()*max+min);
+    document.getElementById("c").value = c;
+
+    //wyświetlenie równania
+    document.getElementById("wynik").innerHTML += "y = ";
+        if(a==1){
+            document.getElementById("wynik").innerHTML += "x<sup>2</sup>";
+        }
+        else if(a==-1){
+            document.getElementById("wynik").innerHTML += "-x<sup>2</sup>";
+        }
+        else if(a!=0){
+            document.getElementById("wynik").innerHTML += a+"x<sup>2</sup>";
+        }
+        if(a!=0 && b>0){
+            document.getElementById("wynik").innerHTML += "+";
+        }
+        if(b==1){
+            document.getElementById("wynik").innerHTML += "x";
+        }
+        else if(b==-1){
+            document.getElementById("wynik").innerHTML += "-x";
+        }
+        else if(b>0){
+            document.getElementById("wynik").innerHTML += b+"x";
+        }
+        else if(b<0){
+            document.getElementById("wynik").innerHTML += b+"x";
+        }
+        if((a!=0 || b!=0) && c>0){
+            document.getElementById("wynik").innerHTML += "+";
+        }
+        if(c>0){
+            document.getElementById("wynik").innerHTML += c;
+        }
+        else if(c<0){
+            document.getElementById("wynik").innerHTML += c;
+        }
+        //gdy a i b równe 0
+        if(a==0 && b==0){
+            losuj();
+        }
+        document.getElementById("wynik").innerHTML += "<br><br>";
+    }
+    else{
+        alert('Liczba napisana po "od" musi być mniejsza od liczby napisanej po "do"!');
     }
 }

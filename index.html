@@ -4,11 +4,33 @@
     <meta charset="utf-8">
     <title>Równanie kwadratowe</title>
     <style>
+        body{
+            background-color: aqua;
+        }
         #rownanie{
             text-align: center;
         }
         #min, #naj{
-            width: 3em;
+            width: 3.2em;
+        }
+        #t_formularz{
+            margin: auto;
+        }
+        .do_prawej{
+            text-align: right;
+        }
+        .info_i{
+            padding: 0.5px;
+            padding-left: 6px;
+            padding-right: 6px;
+            border: 2px solid;
+            border-radius: 50%;
+            width: 200%;
+            height: 100%;
+            font-size: smaller;
+            color: blue;
+            font-weight: bold;
+            background-color: white;
         }
     </style>
     
@@ -23,9 +45,40 @@
         <label>Podaj c: </label><input type="text" id="c"><br><br>
         <input type="button" onclick="oblicz();" value="Oblicz"><br><br>
         <input type="button" onclick="kroki();" value="Krok po kroku"><br><br>
-        <input type="button" onclick="losuj();" value="Losuj">
-        <label>od </label><input type="number" id="min" value="-30">
-        <label>do </label><input type="number" id="naj" value="30">
+
+        <table id="t_formularz">
+            <tr>
+                <td>
+                    <input type="button" onclick="losuj();" value="Losuj">
+                </td>
+                <td>
+                    <label>od </label><input type="number" id="min" value="-30">
+                    <label>do </label><input type="number" id="naj" value="30">
+                </td>
+            </tr>
+            <tr>
+                <td class="do_prawej">
+                    <input type="checkbox" id="ladne">
+                </td>
+                <td>
+                    <label>Losuj "ładne" liczby </label>
+                </td>
+                <td>
+                    <label class="info_i" onclick="alert('Ładne liczby (nazewnictwo własne) to takie w których pierwiastki równania kwadratowego lub liniowego (x, `iksy`) są liczbami całkowitymi albo delta (Δ) jest mniejsza od zera.\n\nJeżeli nie wyświetlił się przykład lub jest on sprzeczny z zaznaczoną opcją, oznacza to, że program przekroczył maksymalną liczbę losowań, aby rozwiązać ten problem, kliknij przycisk `Losuj` jeszcze raz.');" alt="Więcej informacji">i</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="do_prawej">
+                    <input type="checkbox" id="z_delta">
+                </td>
+                <td>
+                    <label>Losuj Δ >= 0</label>
+                </td>
+                <td>
+                    <label class="info_i" onclick="alert('Jeżeli nie wyświetlił się przykład lub jest on sprzeczny z zaznaczoną opcją, oznacza to, że program przekroczył maksymalną liczbę losowań, aby rozwiązać ten problem, kliknij przycisk `Losuj` jeszcze raz.');" alt="Więcej informacji">i</label>
+                </td>
+            </tr>
+        </table>
     </form>
     <p id="wynik"></p>
     <div id="kroki"></div>

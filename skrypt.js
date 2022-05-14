@@ -537,6 +537,85 @@ function losuj(){
             losuj();
         }
         document.getElementById("wynik").innerHTML += "<br><br>";
+
+    //jeżeli wylosują się same 0, losuj jeszcze raz
+    if(a==0&&b==0&&c==0){
+        losuj();
+    }
+
+    //sprawdzenie zaznaczenia checkboxa do "ładnych liczb"
+    let ladne = document.getElementById("ladne").checked;
+    //sprawdzenie zaznaczenia checkboxa "delta większa lub równa 0"
+    let z_delta = document.getElementById("z_delta").checked;
+
+    if(ladne&&z_delta){
+        if(a!=0){
+            let delta = b*b-4*a*c;
+            if(delta<0){
+                losuj();
+            }
+            else if(delta>0){
+                let x1 = (-b-Math.sqrt(delta))/(2*a);
+                let x2 = (-b+Math.sqrt(delta))/(2*a);
+                if(x1%1!=0||x2%1!=0){
+                    
+                    losuj();
+                }
+            }
+            else if(delta==0){
+                let x = (-b)/(2*a);
+                if(x%1!=0){
+                    losuj();
+                }
+            }
+        }
+        else if(a==0){
+            losuj();
+        }
+    }
+    
+    else if(ladne){
+        //szukanie łądnych liczb
+        if(a!=0){
+            //rownanie kwadratowe
+            let delta = b*b-4*a*c;
+            if(delta>0){
+                let x1 = (-b-Math.sqrt(delta))/(2*a);
+                let x2 = (-b+Math.sqrt(delta))/(2*a);
+                if(x1%1!=0||x2%1!=0){
+                    
+                    losuj();
+                }
+            }
+            else if(delta==0){
+                let x = (-b)/(2*a);
+                if(x%1!=0){
+                    losuj();
+                }
+            }
+        }
+        else{
+            //rownanie liniowe
+            let x = c/b*(-1);
+            if(x%1!=0){
+                losuj();
+            }
+        }
+    }
+
+    
+
+    else if(z_delta){
+        if(a!=0){
+            let delta = b*b-4*a*c;
+            if(delta<0){
+                losuj();
+            }
+        }
+        else if(a==0){
+            losuj();
+        }
+    }
     }
     else{
         alert('Liczba napisana po "od" musi być mniejsza od liczby napisanej po "do"!');

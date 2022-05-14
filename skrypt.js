@@ -43,12 +43,12 @@ function oblicz(){
 
         //obliczanie delty
         if(delta==0){
-            let x=-b/2*a;
+            let x=-b/(2*a);
             document.getElementById("wynik").innerHTML += "x = "+x;
         }
         else if(delta>0){
-            let x1= (-b-Math.sqrt(delta))/2*a;
-            let x2 =(-b+Math.sqrt(delta))/2*a;
+            let x1= (-b-Math.sqrt(delta))/(2*a);
+            let x2 =(-b+Math.sqrt(delta))/(2*a);
             document.getElementById("wynik").innerHTML += "x<sub>1</sub> = "+x1+"<br>x<sub>2</sub> = "+x2;
         }
         else{

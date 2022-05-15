@@ -484,6 +484,14 @@ function losuj(){
     let naj = Number(document.getElementById("naj").value);
     let min = Number(document.getElementById("min").value);
 
+    //sprawdzenie checkboxów
+    //sprawdzenie zaznaczenia checkboxa do "wyświetl wynik"
+    let wyswietl_w = document.getElementById("wyswietl_w").checked;
+    //sprawdzenie zaznaczenia checkboxa do "ładnych liczb"
+    let ladne = document.getElementById("ladne").checked;
+    //sprawdzenie zaznaczenia checkboxa "delta większa lub równa 0"
+    let z_delta = document.getElementById("z_delta").checked;
+
     if(naj>=min){
     //let naj = 2;
     //let min = -2;
@@ -542,11 +550,6 @@ function losuj(){
     if(a==0&&b==0&&c==0){
         losuj();
     }
-
-    //sprawdzenie zaznaczenia checkboxa do "ładnych liczb"
-    let ladne = document.getElementById("ladne").checked;
-    //sprawdzenie zaznaczenia checkboxa "delta większa lub równa 0"
-    let z_delta = document.getElementById("z_delta").checked;
 
     if(ladne&&z_delta){
         if(a!=0){
@@ -619,5 +622,63 @@ function losuj(){
     }
     else{
         alert('Liczba napisana po "od" musi być mniejsza od liczby napisanej po "do"!');
+    }
+
+    //wyświetl wynik od razu po wylosowaniu
+    if(wyswietl_w){
+        oblicz();
+    }
+}
+
+function zaznacz(){
+    let zaznacz_w = document.getElementById("zaznacz_w").checked;
+    if(zaznacz_w){
+        document.getElementById("wyswietl_w").checked = true;
+        document.getElementById("ladne").checked = true;
+        document.getElementById("z_delta").checked = true;
+        document.getElementById("zaznacz_t").innerHTML = "Odznacz wszystkie";
+    }
+    else{
+        document.getElementById("wyswietl_w").checked = false;
+        document.getElementById("ladne").checked = false;
+        document.getElementById("z_delta").checked = false;
+        document.getElementById("zaznacz_t").innerHTML = "Zaznacz wszystkie";
+    }
+    checkboxy_k('wyswietl_w');
+    checkboxy_k('ladne');
+    checkboxy_k('z_delta');
+}
+
+//Zmiany zaznaczeń po kliknięciu etykietki chceckboxa
+function zaznacz_tx(){
+    let zaz = document.getElementById("zaznacz_w").checked;
+    document.getElementById("zaznacz_w").checked = !zaz;
+    zaznacz_k();
+}
+
+function zaznacz_k(){
+    let zaz = document.getElementById("zaznacz_w").checked;
+    if(zaz){
+        document.getElementById('zaznacz_w').title = "Odznacz wszystkie";
+    }
+    else{
+        document.getElementById('zaznacz_w').title = "Zaznacz wszystkie";
+    }
+    zaznacz();
+}
+
+function checkboxy(id){
+    let zaz = document.getElementById(id).checked;
+    document.getElementById(id).checked = !zaz;
+    checkboxy_k(id);
+}
+
+function checkboxy_k(id){
+    let zaz = document.getElementById(id).checked;
+    if(zaz){
+        document.getElementById(id).title = "Odznacz checkbox";
+    }
+    else{
+        document.getElementById(id).title = "Zaznacz checkbox";
     }
 }

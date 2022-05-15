@@ -32,24 +32,27 @@
             font-weight: bold;
             background-color: white;
         }
+        #zaznacz_t{
+            font-weight: bold;
+        }
     </style>
     
 </head>
 <body>
     <div id="rownanie">
-    <h3>Równanie kwadratowe ma postać:</h3><br>
-    <h4>y=ax<sup>2</sup>+bx+c</h4>
+    <h3>Równanie kwadratowe ma postać:</h3>
+    <h4>y=ax<sup>2</sup>+bx+c</h4><br>
     <form>
         <label>Podaj a: </label><input type="text" id="a"><br>
         <label>Podaj b: </label><input type="text" id="b"><br>
         <label>Podaj c: </label><input type="text" id="c"><br><br>
-        <input type="button" onclick="oblicz();" value="Oblicz"><br><br>
-        <input type="button" onclick="kroki();" value="Krok po kroku"><br><br>
+        <input type="button" onclick="oblicz();" value="Oblicz" title="Oblicza miejsca zerowe funkcji."><br><br>
+        <input type="button" onclick="kroki();" value="Krok po kroku" title="Pokazuje krok po kroku (razem z obliczeniami) jak obliczyć miejsca zerowe funkcji."><br><br>
 
         <table id="t_formularz">
             <tr>
                 <td>
-                    <input type="button" onclick="losuj();" value="Losuj">
+                    <input type="button" onclick="losuj();" value="Losuj" title="Losuje liczby (a,b,c) z podanego zakresu.">
                 </td>
                 <td>
                     <label>od </label><input type="number" id="min" value="-30">
@@ -58,24 +61,43 @@
             </tr>
             <tr>
                 <td class="do_prawej">
-                    <input type="checkbox" id="ladne">
+                    <input type="checkbox" id="ladne" title="Zaznacz checkbox" onclick="checkboxy_k(id);">
+                </td>
+                <td onclick="checkboxy('ladne');">
+                    <label title="Ładne liczby (nazewnictwo własne) to takie w których pierwiastki równania kwadratowego lub liniowego (x, `iksy`) są liczbam całkowitymi.">Losuj "ładne" liczby </label>
                 </td>
                 <td>
-                    <label>Losuj "ładne" liczby </label>
-                </td>
-                <td>
-                    <label class="info_i" onclick="alert('Ładne liczby (nazewnictwo własne) to takie w których pierwiastki równania kwadratowego lub liniowego (x, `iksy`) są liczbami całkowitymi albo delta (Δ) jest mniejsza od zera.\n\nJeżeli nie wyświetlił się przykład lub jest on sprzeczny z zaznaczoną opcją, oznacza to, że program przekroczył maksymalną liczbę losowań, aby rozwiązać ten problem, kliknij przycisk `Losuj` jeszcze raz.');" alt="Więcej informacji">i</label>
+                    <label class="info_i" title="Kliknij aby dowiedzieć się więcej." onclick="alert('Ładne liczby (nazewnictwo własne) to takie w których pierwiastki równania kwadratowego lub liniowego (x, `iksy`) są liczbami całkowitymi albo delta (Δ) jest mniejsza od zera.\n\nJeżeli nie wyświetlił się przykład lub jest on sprzeczny z zaznaczoną opcją, oznacza to, że program przekroczył maksymalną liczbę losowań, aby rozwiązać ten problem, kliknij przycisk `Losuj` jeszcze raz.');" alt="Więcej informacji">i</label>
                 </td>
             </tr>
             <tr>
                 <td class="do_prawej">
-                    <input type="checkbox" id="z_delta">
+                    <input type="checkbox" id="z_delta" title="Zaznacz checkbox" onclick="checkboxy_k(id);">
                 </td>
-                <td>
+                <td onclick="checkboxy('z_delta');">
                     <label>Losuj Δ >= 0</label>
                 </td>
                 <td>
-                    <label class="info_i" onclick="alert('Jeżeli nie wyświetlił się przykład lub jest on sprzeczny z zaznaczoną opcją, oznacza to, że program przekroczył maksymalną liczbę losowań, aby rozwiązać ten problem, kliknij przycisk `Losuj` jeszcze raz.');" alt="Więcej informacji">i</label>
+                    <label class="info_i" title="Kliknij aby dowiedzieć się więcej." onclick="alert('Jeżeli nie wyświetlił się przykład lub jest on sprzeczny z zaznaczoną opcją, oznacza to, że program przekroczył maksymalną liczbę losowań, aby rozwiązać ten problem, kliknij przycisk `Losuj` jeszcze raz.');" alt="Więcej informacji">i</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="do_prawej">
+                    <input type="checkbox" id="wyswietl_w" title="Zaznacz checkbox" onclick="checkboxy_k(id);">
+                </td>
+                <td onclick="checkboxy('wyswietl_w');">
+                    <label title="Wyświetla wynik zaraz po wylosowaniu.">Wyświetl wynik</label>
+                </td>
+                <td>
+                    <label class="info_i" title="Kliknij aby dowiedzieć się więcej." onclick="alert('Wyświetla wynik od razu po wylosowaniu.\n\nJeżeli nie wyświetlił się przykład lub jest on sprzeczny z zaznaczoną opcją, oznacza to, że program przekroczył maksymalną liczbę losowań, aby rozwiązać ten problem, kliknij przycisk `Losuj` jeszcze raz.');" alt="Więcej informacji">i</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="do_prawej">
+                    <input type="checkbox" id="zaznacz_w" onchange="zaznacz_k();" title="Zaznacz wszystkie">
+                </td>
+                <td onclick="zaznacz_tx();">
+                    <label id="zaznacz_t">Zaznacz wszystkie </label>
                 </td>
             </tr>
         </table>

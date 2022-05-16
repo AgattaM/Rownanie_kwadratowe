@@ -630,24 +630,7 @@ function losuj(){
     }
 }
 
-function zaznacz(){
-    let zaznacz_w = document.getElementById("zaznacz_w").checked;
-    if(zaznacz_w){
-        document.getElementById("wyswietl_w").checked = true;
-        document.getElementById("ladne").checked = true;
-        document.getElementById("z_delta").checked = true;
-        document.getElementById("zaznacz_t").innerHTML = "Odznacz wszystkie";
-    }
-    else{
-        document.getElementById("wyswietl_w").checked = false;
-        document.getElementById("ladne").checked = false;
-        document.getElementById("z_delta").checked = false;
-        document.getElementById("zaznacz_t").innerHTML = "Zaznacz wszystkie";
-    }
-    checkboxy_k('wyswietl_w');
-    checkboxy_k('ladne');
-    checkboxy_k('z_delta');
-}
+//zmiany checkboxów i ich etykietek
 
 //Zmiany zaznaczeń po kliknięciu etykietki chceckboxa
 function zaznacz_tx(){
@@ -667,6 +650,25 @@ function zaznacz_k(){
     zaznacz();
 }
 
+function zaznacz(){
+    let zaznacz_w = document.getElementById("zaznacz_w").checked;
+    if(zaznacz_w){
+        document.getElementById("wyswietl_w").checked = true;
+        document.getElementById("ladne").checked = true;
+        document.getElementById("z_delta").checked = true;
+        document.getElementById("zaznacz_t").innerHTML = "Odznacz wszystkie";
+    }
+    else{
+        document.getElementById("wyswietl_w").checked = false;
+        document.getElementById("ladne").checked = false;
+        document.getElementById("z_delta").checked = false;
+        document.getElementById("zaznacz_t").innerHTML = "Zaznacz wszystkie";
+    }
+    checkboxy_k('wyswietl_w');
+    checkboxy_k('ladne');
+    checkboxy_k('z_delta');
+}
+
 function checkboxy(id){
     let zaz = document.getElementById(id).checked;
     document.getElementById(id).checked = !zaz;
@@ -680,5 +682,31 @@ function checkboxy_k(id){
     }
     else{
         document.getElementById(id).title = "Zaznacz checkbox";
+    }
+    pop_zaznacz();
+}
+
+function pop_zaznacz(){
+    //sprawdzenie pozostałych zaznaczeń
+    let ladne = document.getElementById("ladne").checked;
+    let z_delta = document.getElementById("z_delta").checked;
+    let wyswietl_w = document.getElementById("wyswietl_w").checked;
+
+    if(ladne&z_delta&wyswietl_w){
+        document.getElementById("zaznacz_w").checked = true;
+    }
+    else if((!ladne)&(!z_delta)&(!wyswietl_w)){
+        document.getElementById("zaznacz_w").checked = false;
+    }
+
+    //sprawdzenie checkboxa "Zaznacz/odznacz wszystkie"
+    let zaznacz_w = document.getElementById("zaznacz_w").checked;
+    if(zaznacz_w){
+        document.getElementById('zaznacz_w').title = "Odznacz wszystkie";
+        document.getElementById("zaznacz_t").innerHTML = "Odznacz wszystkie";
+    }
+    else{
+        document.getElementById('zaznacz_w').title = "Zaznacz wszystkie";
+        document.getElementById("zaznacz_t").innerHTML = "Zaznacz wszystkie";
     }
 }
